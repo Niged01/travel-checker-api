@@ -6,7 +6,7 @@ from .settings import (JWT_AUTH_COOKIE, JWT_AUTH_REFRESH_COOKIE, JWT_AUTH_SAMESI
 @api_view()
 def root_route(request):
     return Response({
-        "message": "Welcome to my drf API!"
+        "message": "Welcome to my Travelled API!"
     })
 
 @api_view(['POST'])

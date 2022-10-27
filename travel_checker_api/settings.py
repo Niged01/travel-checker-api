@@ -65,6 +65,7 @@ DEBUG = 'DEV' in os.environ
 ALLOWED_HOSTS = [
     'travel-checker-api.herokuapp.com',
     'localhost',
+    'skyscanner50.p.rapidapi.com',
 ]
 
 if 'CLIENT_ORIGIN' in os.environ:
@@ -79,6 +80,7 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
 
 CORS_ALLOW_CREDENTIALS = True
 # Application definition
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -105,6 +107,7 @@ INSTALLED_APPS = [
     'comments',
     'likes',
     'followers',
+    'travelled',
 ]
 SITE_ID = 1
 MIDDLEWARE = [
