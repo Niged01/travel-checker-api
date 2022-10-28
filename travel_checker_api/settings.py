@@ -63,9 +63,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
-    'travel-checker-api.herokuapp.com',
+    'travel-checker-api-nd.herokuapp.com',
     'localhost',
-    'skyscanner50.p.rapidapi.com',
+    
 ]
 
 if 'CLIENT_ORIGIN' in os.environ:
