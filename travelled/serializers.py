@@ -1,5 +1,4 @@
 from rest_framework import serializers
-from likes.models import Like
 from travelled.models import Travelled
 
 class TravelledSerializer(serializers.ModelSerializer):
@@ -8,9 +7,7 @@ class TravelledSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
-    like_id = serializers.SerializerMethodField()
-    comments_count = serializers.ReadOnlyField()
-    likes_count = serializers.ReadOnlyField()
+    
 
     def validate_image(self, value):
         '''make sure uploaded image does not exceed size'''
@@ -33,21 +30,11 @@ class TravelledSerializer(serializers.ModelSerializer):
         request = self.context['request']
         return request.user == obj.owner
 
-    def get_like_id(self, obj):
-        '''owner can unlike the achievement'''
-        user = self.context['request'].user
-        if user.is_authenticated:
-            like = Like.objects.filter(
-                owner=user, post=obj
-            ).first()
-            return like.id if like else None
-        return None
 
     class Meta:
         '''fields we want to display'''
         model = Travelled
         fields = [
-            'id', 'owner', 'date_created', 'title', 'content',
-            'image', 'is_owner', 'profile_id', 'profile_image',
-            'like_id', 'likes_count', 'comments_count',
+            'city', 'country', 'date_created', 'id', 'image', 'owner', 
+            'owner_id', 'profile_image', 'is_owner', 'profile_id',
         ]

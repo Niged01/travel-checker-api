@@ -10,31 +10,8 @@ class TravelledList(generics.ListCreateAPIView):
     '''list places travelled and create a place travelled if logged in'''
     serializer_class = TravelledSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Travelled.objects.annotate(
-        comments_count=Count(
-            'comment', distinct=True
-        ),
-        likes_count=Count('like', distinct=True),
-    ).order_by('-date_created')
-    filter_backends = [
-        filters.OrderingFilter,
-        filters.SearchFilter,
-        DjangoFilterBackend,
-    ]
-    filterset_fields = [
-        'like__owner__profile',
-        'owner__profile',
-        'owner__followed__owner__profile',
-    ]
-    search_fields = [
-        'owner__username',
-        'content',
-        'title',
-    ]
-    ordering_fields = [
-        'comments_count',
-        'likes_count',
-    ]
+    queryset = Travelled.objects.all()
+    
 
     def perform_create(self, serializer):
         '''associate travelled with logged in user'''
@@ -44,10 +21,6 @@ class TravelledDetail(generics.RetrieveUpdateDestroyAPIView):
     '''retrieve, edit,or delete if owned by user'''
     serializer_class = TravelledSerializer
     permission_classes = [IsOwnerOrReadOnly]
-    queryset = Travelled.objects.annotate(
-        comments_count=Count(
-            'comments', distinct=True
-        ),
-        likes_count=Count('like', distinct=True),
-    ).order_by('-date_created') 
+    queryset = Travelled.objects.all()
+    
 
