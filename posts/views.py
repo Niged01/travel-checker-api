@@ -1,5 +1,5 @@
 from django.db.models import Count
-from rest_framework import generics, permissions, filters
+from rest_framework import generics, permissions, filters, status
 from django_filters.rest_framework import DjangoFilterBackend
 from travel_checker_api.permissions import IsOwnerOrReadOnly
 from .models import Post
@@ -54,3 +54,8 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
         likes_count=Count('likes', distinct=True),
         comments_count=Count('comment', distinct=True)
     ).order_by('-created_at')
+
+    def delete(self, request, pk):
+        page = self.get_object(pk)
+        page.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
