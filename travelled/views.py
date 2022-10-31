@@ -11,7 +11,6 @@ class TravelledList(generics.ListCreateAPIView):
     serializer_class = TravelledSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Travelled.objects.all()
-    
 
     def perform_create(self, serializer):
         '''associate travelled with logged in user'''
@@ -22,5 +21,8 @@ class TravelledDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = TravelledSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Travelled.objects.all()
-    
 
+    def delete(self, request, pk):
+        page = self.get_object(pk)
+        page.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
