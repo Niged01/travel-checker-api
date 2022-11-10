@@ -6,6 +6,7 @@ from travel_checker_api.permissions import IsOwnerOrReadOnly
 from .models import Travelled
 from .serializers import TravelledSerializer
 
+
 class TravelledList(generics.ListCreateAPIView):
     '''list places travelled and create a place travelled if logged in'''
     serializer_class = TravelledSerializer
@@ -15,6 +16,7 @@ class TravelledList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         '''associate travelled with logged in user'''
         serializer.save(owner=self.request.user)
+
 
 class TravelledDetail(generics.RetrieveUpdateDestroyAPIView):
     '''retrieve, edit,or delete if owned by user'''

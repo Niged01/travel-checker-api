@@ -40,33 +40,43 @@ who doesn't own it.
 - Tests to make sure users can retrieve Traveled list, a logged in user can update their
 Travelled, and a logged out user cannot create a Travelled List.
 
-![Testing memo_posts list view](./assets/documents/Travelledlist.png)
+![Testing Travelled list view](./assets/documents/Travelledlist.png)
 
 - Tests Fails
 
-![Results for memo_posts list view](./assets/documents/travelledresults.png)
+![Results for Travelled list view](./assets/documents/travelledresults.png)
 
-### Memo_posts Detail View
+### Travelled Detail View
 - Tests to check that a valid id will retrieve a Travelled list, an invalid id will not retrieve a
 Travelled list, check wether a user can update their own list, and a list cannot be updated by someone
 who doesn't own it.
 
-![Testing memo_posts detail view](./assets/documents/travelleddetaillist.png)
+![Testing Travelled detail view](./assets/documents/Travellellisttest.png)
 
 
 
 - Test Failed
 
-![results for memo_posts detail view](./assets/documents/travelledresults.png)
+![results for Travelled detail view](./assets/documents/travelledresults.png)
 
 
 
 ## Validator Testing
-- yET TO DO
 
-![Validator table for checking]()
+Ran Pep8 validator testing in terminal Using the following instructions:
 
-![Error found in pep8 validator]()
+- As a workaround, you can add a PEP8 validator to your Gitpod Workspace directly by following these steps:
+- Run the command pip3 install pycodestyle  Note that this extension may already be installed, in which case this command will do nothing.
+- In your workspace, press Ctrl+Shift+P (or Cmd+Shift+P on Mac).
+- Type the word linter into the search bar that appears, and click on Python: Select Linter from the filtered results (image 1).
+- Select pycodestyle from the list (image 2).
+- PEP8 errors will now be underlined in red, as well as being listed in the PROBLEMS tab beside your terminal.
+
+- No red errors showing after corrections made mostly around expected double spaces.
+
+![Validator table for checking](./assets/documents/pep8.png)
+
+
 
 ## Manual Testing
 - Manual Tests were carried out for the Url paths, search and filter functionality, and CRUD functionality, all were made into tables and checked off.

@@ -17,8 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 from .views import root_route, logout_route
 
-#localhost:5000/flights
-#how to make third-party API CALLS IN drf
 
 urlpatterns = [
     path('', root_route),

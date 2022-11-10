@@ -1,13 +1,13 @@
 from rest_framework import serializers
 from travelled.models import Travelled
 
+
 class TravelledSerializer(serializers.ModelSerializer):
     '''serializer class for main serializer app'''
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
-    
 
     def validate_image(self, value):
         '''make sure uploaded image does not exceed size'''
@@ -29,7 +29,6 @@ class TravelledSerializer(serializers.ModelSerializer):
         '''check user is owner'''
         request = self.context['request']
         return request.user == obj.owner
-
 
     class Meta:
         '''fields we want to display'''
